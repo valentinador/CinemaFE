@@ -61,7 +61,7 @@ const Login = () => {
     <Container component="main" maxWidth="xs">
       {infoLoggedUser.name && infoLoggedUser.name?.length > 0 && (
         <p>
-          Ciao, {infoLoggedUser.name} hai il ruolo di {infoLoggedUser.role}
+          Ciao, {infoLoggedUser.name} ti sei loggato, dovresti vedere un cookie con il token. Hai il ruolo di {infoLoggedUser.role}
         </p>
       )}
       <Box

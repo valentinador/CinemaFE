@@ -7,6 +7,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom"
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import FilmsList from "./pages/FilmsList/FilmsList";
 import Login from "./pages/Login/Login";
+import AddFilmForm from "./components/AddFilmForm/AddFilmForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login/>,
       },
+      {
+        path: "/addfilm",
+        element: <AddFilmForm/>,
+      }
     ],
 
   },

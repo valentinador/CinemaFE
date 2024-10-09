@@ -4,7 +4,7 @@ import FaceIcon from '@mui/icons-material/Face';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 export const MENU_ITEMS = [
     {text:'Elenco Film', icon:FormatListBulletedIcon, path:"/films"}, 
-    {text:'Aggiungi Film', icon:AddIcon, path:""}, 
+    {text:'Aggiungi Film', icon:AddIcon, path:"/addfilm"}, 
     {text:'Login', icon:FaceIcon, path:"/login"}, 
     {text:'Logout', icon:ExitToAppIcon, path:""}
 ];
