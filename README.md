@@ -8,6 +8,8 @@ Per questioni di tempo non ho potuto utillizzare tutte le api, ne ho utilizzate 
 - GET localhost:3000/api/v1/film
 - GET localhost:3000/api/v1/auth/me
 - POST localhost:3000/api/v1/login
+
+
 e mi sono appoggiata alla libreria MaterialUI senza fare nessuna modifica grafica. 
 
 ## Come iniziare
