@@ -1,8 +1,4 @@
 
-export interface ILogin{
-    email:string,
-    password:string
-}
 
 export interface IUserLoggedIn{
     name:string,
@@ -11,4 +7,13 @@ export interface IUserLoggedIn{
     role:'user'| 'publisher'| '',
     password?: string,
     createdAt:Date | null
+}
+
+export interface IToken{
+    success: boolean,
+    token:string
+}
+
+export interface IStateUserLoggedIn{
+    data:IUserLoggedIn
 }

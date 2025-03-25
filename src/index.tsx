@@ -8,6 +8,9 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import FilmsList from "./pages/FilmsList/FilmsList";
 import Login from "./pages/Login/Login";
 import AddFilmForm from "./components/AddFilmForm/AddFilmForm";
+import { Provider } from "react-redux"; // Importa il Provider da react-redux
+import { store } from "./store";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,7 +42,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+      <Provider store={store}> 
+
     <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

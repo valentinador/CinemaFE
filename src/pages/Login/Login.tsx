@@ -1,18 +1,18 @@
 // LoginForm.js
 import React, { useState } from "react";
 import { TextField, Button, Typography, Container, Box } from "@mui/material";
-import { getItems, postItem } from "../../utils/crud";
-import { IUser } from "../../types/IUser";
+import { postItem } from "../../utils/crud";
+import { useDispatch, useSelector } from "react-redux";
+import { loginInfo, selectLogin } from "../../slices/logSlice";
+import { IToken } from "../../types/ILogin";
+import { AppDispatch } from "../../store";
 
-type IInfoLoggedUser = Partial<IUser>;
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [infoLoggedUser, setInfoLoggedUser] = useState<IInfoLoggedUser>({
-    name: "",
-    role: "",
-  });
+  const dispatch = useDispatch<AppDispatch>();
+  const loginState = useSelector(selectLogin);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,24 +27,10 @@ const Login = () => {
         email,
         password,
       })
-        .then(async (postResult) => {
-          await getItems(`${process.env.REACT_APP_API_URL}/auth/me`, {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${postResult.token}`,
-            },
+        .then(async (pippo:IToken) => {
+          dispatch(loginInfo(pippo.token))
+
           })
-            .then((result: { data: IUser }) => {
-              if (result)
-                setInfoLoggedUser({
-                  name: result.data.name,
-                  role: result.data.role,
-                });
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-        })
         .catch((error) => {
           console.log(error);
         });
@@ -59,9 +45,9 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      {infoLoggedUser.name && infoLoggedUser.name?.length > 0 && (
+          {loginState.data?.name && loginState.data?.name.length > 0 && (
         <p>
-          Ciao, {infoLoggedUser.name} ti sei loggato, dovresti vedere un cookie con il token. Hai il ruolo di {infoLoggedUser.role}
+          Ciao, {loginState.data.name} ti sei loggato, dovresti vedere un cookie con il token. Hai il ruolo di {loginState.data.role}
         </p>
       )}
       <Box

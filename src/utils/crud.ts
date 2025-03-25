@@ -1,5 +1,5 @@
 import { IFilm } from "../types/IFilm";
-import { ILogin } from "../types/ILogin";
+import { IUser } from "../types/IUser";
 
 export const getItems = async(url:string, params?: RequestInit)=>{
         try {
@@ -19,7 +19,7 @@ export const getItems = async(url:string, params?: RequestInit)=>{
 }
 
 
-export const postItem = async (url:string, data:IFilm | ILogin) => {
+export const postItem = async (url:string, data:IFilm | Partial<IUser>) => {
   try {
       const response = await fetch(url, {
           method: 'POST',
